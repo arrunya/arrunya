@@ -2,8 +2,6 @@ body{
     height: 1500px;
     background-image: url(bgjs.jpg);
     background-repeat: no-repeat;
-    
-    text-align: center;
     background-attachment: fixed;
     background-size:cover;
   
@@ -42,9 +40,20 @@ h1{
   }
   h5{
     font-family: 'Anton', sans-serif;
-    color: rgb(255, 255, 255); 
-    margin: center;
+    color: rgb(255, 255, 255);
+    text-align: center; 
+   
   }
+  .modal-body{
+    color: white;
+}
+
+a1{
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    
+}
 
 
 
