@@ -1,0 +1,38 @@
+body{
+    height: 1500px;
+    background-image: url(bgjs.jpg);
+    background-repeat: no-repeat;
+    
+    text-align: center;
+    background-attachment: fixed;
+    background-size:cover;
+  
+    
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+}
+#header-wrapper{
+    background-image: url("pic10.jpg");
+    background-size: cover;
+    position: relative;
+    padding: 0em 0em 15em 0em;
+}
+h1{
+    font-family: 'Anton', sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 70px;
+    margin-left: center;
+    margin-right: center;
+  
+  
+  }
+
+
+
+
+
