@@ -15,12 +15,18 @@ nav{
     top: 0;
     overflow: hidden;
     width: 100%;
+    background: rgba(255, 0, 0, 0);
+}
+h3{
+    text-align: left;
+
+
 }
 #header-wrapper{
     background-image: url("pic10.jpg");
     background-size: cover;
     position: relative;
-    padding: 0em 0em 15em 0em;
+    padding: 0em 0em 10em 0em;
 }
 h1{
     font-family: 'Anton', sans-serif;
@@ -28,9 +34,16 @@ h1{
     font-size: 70px;
     margin-left: center;
     margin-right: center;
-  
-  
   }
+
+  .modal-content{
+    background-image: url(bgjs.jpg);
+
+  }
+  h5{
+    color: rgb(255, 255, 255); 
+  }
+
 
 
 
