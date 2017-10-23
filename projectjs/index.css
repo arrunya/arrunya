@@ -24,7 +24,7 @@ h3{
     background-image: url("pic10.jpg");
     background-size: cover;
     position: relative;
-    padding: 0em 0em 15em 0em;
+    padding: 0em 0em 10em 0em;
 }
 h1{
     font-family: 'Anton', sans-serif;
@@ -32,6 +32,8 @@ h1{
     font-size: 70px;
     margin-left: center;
     margin-right: center;
+    text-align: center;
+    
   }
 
   .modal-content{
@@ -52,8 +54,37 @@ a1{
     margin-right: auto;
     width: 6em
 }
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
 
+div.gallery:hover {
+    border: 1px solid #777;
+}
 
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+h4{
+    font-family: 'Anton', sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+    margin-left: center;
+    margin-right: center;
+    text-align: center;
+    
+  }
+  
 
 
 
