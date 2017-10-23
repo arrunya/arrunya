@@ -118,19 +118,19 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
                         <div class="form-check">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);">Confrim</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);" id="signin">Confrim</button>
                     <button type="button" class="btn btn-primary" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);">Close</button>
                 </div>
             </div>
@@ -163,7 +163,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" class="form-control" id="passwordregis" placeholder="Password">
                         </div>
                         <div class="form-check">
                         </div>
@@ -189,7 +189,7 @@
                     newuser.lname = $('#lname').val();
                     newuser.tel = $('#tel').val();
                     newuser.email = $('#email').val();
-                    newuser.password = $('#password').val();
+                    newuser.password = $('#passwordregis').val();
                     
                     console.log(newuser);
                     var url = "http://localhost:3000/user";
@@ -199,6 +199,25 @@
                         setTimeout(window.location.href = "index.html", 1000);
                     });
                 // }
+            });
+
+            $("#signin").click(function () {
+                var url = "http://localhost:3000/user?";
+                url += "username=" + $("#username").val();
+                url += "&password=" + $("#password").val();
+                console.log(url);
+                $.getJSON(url, function (data, status) {
+                    console.log(data);
+                    if (data.length == 0) {
+                        console.log("NO DATA!");
+                        // $("#err").show();
+                        alert("Username or Password is wrong !!!");
+                        setTimeout(window.location.href = "index.html?id=" + data[0].id, 30000);
+                    } else {
+                        console.log(data[0].id);
+                        setTimeout(window.location.href = "creat.html?id=" + data[0].id, 30000);
+                    }
+                });
             });
        </script>
         

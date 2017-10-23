@@ -51,6 +51,25 @@
       </div>
      
     </div>
+
+    <script>
+        $("#signin").click(function () {
+            var url = "http://localhost:3000/user?";
+            url += "username=" + $("#username").val();
+            url += "&password=" + $("#password").val();
+            console.log(url);
+            $.getJSON(url, function (data, status) {
+                console.log(data);
+                if (data.length == 0) {
+                    console.log("NO DATA!");
+                    $("#err").show();
+                } else {
+                    console.log(data[0].id);
+                    setTimeout(window.location.href = "creat.html?id=" + data[0].id, 30000);
+                }
+            });
+        });
+    </script>
     
 
        

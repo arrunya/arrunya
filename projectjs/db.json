@@ -15,6 +15,14 @@
       "tel": "asdf",
       "email": "asdf",
       "password": "asdf"
+    },
+    {
+      "id": 3,
+      "fname": "qwer",
+      "lname": "qwer",
+      "tel": "qwer",
+      "email": "qwer",
+      "password": "qwer"
     }
   ]
 }

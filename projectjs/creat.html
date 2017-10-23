@@ -24,7 +24,8 @@
 
             <nav class="navbar navbar-dark justify-content-between">
                 <h3 class="text-white">govivigo</h3> 
-                <nbsp><a href="index.html"><button type="button" class="btn btn-dark" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);">Home</button></a>                <button type="button" class="btn btn-dark"style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);"data-target="#exampleModal11" data-toggle="modal">Registration</button>
+                <nbsp><a href="index.html"><button type="button" class="btn btn-dark" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);">Home</button></a>                
+                <button type="button" class="btn btn-dark"style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);"data-target="#exampleModal11" data-toggle="modal" id="logout">Logout</button>
                 
                
                 <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#exampleModal">
@@ -43,7 +44,11 @@
     </div>
    
 
-    
+    <script>
+        $('#logout').click(function(){
+            setTimeout(window.location.href = "index.html", 1000);
+        });
+    </script>
   
 
     
