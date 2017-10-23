@@ -1,0 +1,20 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "fname": "test",
+      "lname": "test",
+      "tel": "0123456789",
+      "email": "admin@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": 2,
+      "fname": "asdf",
+      "lname": "asdf",
+      "tel": "asdf",
+      "email": "asdf",
+      "password": "asdf"
+    }
+  ]
+}

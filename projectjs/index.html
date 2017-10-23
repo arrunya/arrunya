@@ -8,8 +8,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" -->
+        <!-- crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
@@ -150,8 +154,8 @@
                             <input type="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Name">
                             <label for="exampleInputEmail1">Lastname</label>
                             <input type="lname" class="form-control" id="lname" aria-describedby="emailHelp" placeholder="Enter Lastname">
-                            <label for="exampleInputEmail1">Tell.</label>
-                            <input type="tell" class="form-control" id="tell" aria-describedby="emailHelp" placeholder="000-0000000">
+                            <label for="exampleInputEmail1">Tel.</label>
+                            <input type="tell" class="form-control" id="tel" aria-describedby="emailHelp" placeholder="000-0000000">
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -159,14 +163,14 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
                         <div class="form-check">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);">Confrim</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);" id="confirmbtn">Confirm</button>
                     <button type="button" class="btn btn-primary" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);">Close</button>
                 </div>
 
@@ -176,7 +180,27 @@
       
     
 
-       
+       <script>
+           $("#confirmbtn").click(function () {
+                // if ($("#signupForm").valid()) {
+                    var newuser = {};
+                    newuser.id = null;
+                    newuser.fname = $('#name').val();
+                    newuser.lname = $('#lname').val();
+                    newuser.tel = $('#tel').val();
+                    newuser.email = $('#email').val();
+                    newuser.password = $('#password').val();
+                    
+                    console.log(newuser);
+                    var url = "http://localhost:3000/user";
+                    $.post(url, newuser, function (data, status) {
+                        console.log("Inserted " + data);
+                        // $("#suc").show();
+                        setTimeout(window.location.href = "index.html", 1000);
+                    });
+                // }
+            });
+       </script>
         
 </body>
        
