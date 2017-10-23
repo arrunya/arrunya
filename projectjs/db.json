@@ -9,20 +9,19 @@
       "password": "1234"
     },
     {
-      "id": 2,
-      "fname": "asdf",
-      "lname": "asdf",
-      "tel": "asdf",
-      "email": "asdf",
-      "password": "asdf"
-    },
-    {
       "id": 3,
       "fname": "qwer",
       "lname": "qwer",
       "tel": "qwer",
       "email": "qwer",
       "password": "qwer"
+    },
+    {
+      "id": 4,
+      "fname": "asdfasdf",
+      "lname": "asdfasdf",
+      "tel": "asdfasdf",
+      "email": "asdfasdf"
     }
   ]
 }

@@ -8,8 +8,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" -->
+        <!-- crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
@@ -28,7 +32,7 @@
                 <button type="button" class="btn btn-dark"style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);"data-target="#exampleModal11" data-toggle="modal" id="logout">Logout</button>
                 
                
-                <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#exampleModal">
+                <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#exampleModal11" id="profile">
                     <span class="navbar-toggler-icon"></span>
                   </button> 
                   
@@ -49,12 +53,112 @@
             setTimeout(window.location.href = "index.html", 1000);
         });
     </script>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal11" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registration</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name</label>
+                            <input type="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Name">
+                            <label for="exampleInputEmail1">Lastname</label>
+                            <input type="lname" class="form-control" id="lname" aria-describedby="emailHelp" placeholder="Enter Lastname">
+                            <label for="exampleInputEmail1">Tel.</label>
+                            <input type="tell" class="form-control" id="tel" aria-describedby="emailHelp" placeholder="000-0000000">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="hidden" name="password" id="password">
+                            
+                           
+                        </div>
+                        
+                        <div class="form-check">
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);" id="editbtn">Edit data</button>
+                    <button type="button" class="btn btn-primary" style=" background-color:#EC9BAA; border: 2px solid rgba(76, 175, 79, 0);" id="delbtn">Delete my account</button>
+                </div>
+
+            </div>
+        </div>
+
+      
+    
+
   
 
     
 
                   
-    
+    <script>
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results[1] || 0;
+        }
+        $("#profile").click(function () {
+            // console.log("test");
+            // console.log($.urlParam('id'));
+                var url = "http://localhost:3000/user?id="+$.urlParam('id');
+
+                // console.log(url);
+                $.getJSON(url, function (data, status) {
+                    // console.log(data[0].fname);
+                    $('#name').val(data[0].fname);
+                    $('#lname').val(data[0].lname);
+                    $('#email').val(data[0].email);
+                    $('#tel').val(data[0].tel);
+                    $('#password').val(data[0].password);
+                });
+            });
+
+            $("#editbtn").click(function () {
+                console.log("This is edit btn");
+                    var newuser = {};
+                    newuser.id = null;
+                    newuser.fname = $('#name').val();
+                    newuser.lname = $('#lname').val();
+                    newuser.tel = $('#tel').val();
+                    newuser.email = $('#email').val();
+                    newuser.password = $('#password').val();
+                    
+                    console.log(newuser);
+                    var url = "http://localhost:3000/user/" + $.urlParam('id');
+
+                    $.ajax({
+                        url: url,
+                        type: 'PUT',
+                        data: newuser,
+                        success: function(result) {
+                        alert('Updated Complete!');
+                        window.location.href = "creat.html?id=" + $.urlParam('id');
+                        }
+                    });
+            });
+
+            $("#delbtn").click(function () {
+                $.ajax({
+                    type: 'DELETE',
+                    url: "http://localhost:3000/user/" + $.urlParam('id'),
+                    mimeType: 'json',
+                    success: function (inf) {
+                        alert('Deleted Complete!');
+                        setTimeout(window.location.href = "index.html", 30000);
+                    }
+                });
+            });
+    </script>
 
 
 
